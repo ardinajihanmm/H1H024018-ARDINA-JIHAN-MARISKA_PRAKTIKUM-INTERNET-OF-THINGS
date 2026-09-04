@@ -1,4 +1,4 @@
-# Praktikum Internet of Things (TK245005)
+# Praktikum Internet of Things 
 ## Modul 1 – Sensor dan Aktuator
 
 | | |
