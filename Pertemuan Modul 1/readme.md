@@ -119,15 +119,16 @@ Seluruh pembacaan berstatus Valid, tidak ada NaN. Suhu naik signifikan saat dide
 
 ### Jawaban Pertanyaan Praktikum 1A 
 1) Flowchart proses akuisisi data sensor DHT22
+
 ![Flowchart](Skematik%20Rangkaian/Flowchart.png)
 
-2) Apa fungsi dari perintah isnan() pada program tersebut?
+3) Apa fungsi dari perintah isnan() pada program tersebut?
 isnan() memeriksa apakah nilai hasil pembacaan sensor (suhu atau kelembaban) berupa NaN (Not a Number), yaitu kondisi ketika sensor gagal memberikan data valid, misalnya akibat gangguan komunikasi antara ESP32 dan DHT22. Dengan pengecekan ini, program dapat menampilkan pesan kesalahan alih-alih menampilkan data yang tidak valid.
 
-3) Mengapa diperlukan jeda (delay) minimal ±2 detik antar pembacaan sensor DHT22?
+4) Mengapa diperlukan jeda (delay) minimal ±2 detik antar pembacaan sensor DHT22?
 Sensor DHT22 memiliki sampling rate maksimum sekitar 0,5 Hz (satu kali pembacaan tiap 2 detik) sesuai datasheet-nya. Jika dibaca lebih cepat dari itu, sensor belum menyelesaikan siklus pengukuran internalnya sehingga data yang dikembalikan bisa tidak akurat atau bahkan NaN.
 
-4) Modifikasi: rata-rata 5 kali pembacaan sebelum ditampilkan
+5) Modifikasi: rata-rata 5 kali pembacaan sebelum ditampilkan
 
 ```cpp
 #include <DHT.h>
@@ -327,7 +328,7 @@ void loop() {
 }
 ```
 
-Penjelasan tiap baris tambahan:
+Penjelasan:
 - batasAtas = 30.0 dan batasBawah = 28.0 — dua ambang batas suhu untuk logika histerisis, menggantikan satu variabel suhuThreshold.
 - bool statusAktuator = false; — menyimpan status aktuator saat ini, agar program "mengingat" kondisi aktuator antar-siklus loop().
 - if (!statusAktuator && suhu > batasAtas) — aktuator hanya dinyalakan jika sebelumnya mati dan suhu telah melewati batas atas (30 °C).
